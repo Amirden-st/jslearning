@@ -23,6 +23,7 @@ const myTransport = new Transport("John", "train");
 console.log(myTransport);
 
 const myPriora = new Car("Adilet", "LADA Priora");
+
 myPriora.start();
 console.log(myPriora.isStarted());
 

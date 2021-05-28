@@ -9,7 +9,6 @@ export default class Transport {
   start() {
     this.#started = true;
     console.log(`The ${this.#owner}'s transport was started`);
-
   }
   off() {
     this.#started = false;
@@ -23,3 +22,4 @@ export default class Transport {
     return this.#started;
   }
 }
+
