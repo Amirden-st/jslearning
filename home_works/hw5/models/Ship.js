@@ -1,12 +1,24 @@
 import Transport from "./Transport";
 export default class Ship extends Transport {
   #started = false;
-  displacement;
+  #displacement;
   #anchorIsDropped = false;
   constructor(owner, displacement) {
-    super(owner, "Ship");
+    super(owner, "ship");
     this.displacement = displacement;
   }
+
+  get displacement() {
+    return this.#displacement;
+  }
+
+  set displacement(d) {
+    if (d > 600000) {
+      throw Error("Не думаю, что ты владеешь супертанкером");
+    }
+    this.#displacement = d;
+  }
+
   start() {
     this.#started = true;
     console.log(`The ship was started`);

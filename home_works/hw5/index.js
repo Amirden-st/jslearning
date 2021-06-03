@@ -12,7 +12,7 @@
 // 4) Каждому наследнику добавьте свойства и методы характерные именно для него:
 // к примеру у корабля может быть водоизмещение, у самолета размах крыльев,
 // у автомобиля количество колес
-// 5) Создайте по одному экземпляру каждого созданного класса
+// 5) Создайте eпо одному экземпляру каждого созданного класса
 
 import Transport from "./models/Transport";
 import Car from "./models/Car";
@@ -22,7 +22,7 @@ import Plane from "./models/Plane";
 const myTransport = new Transport("John", "train");
 console.log(myTransport);
 
-const myPriora = new Car("Adilet", "LADA Priora");
+const myPriora = new Car("Adilet", "LADA Priora", 1200);
 
 myPriora.start();
 console.log(myPriora.isStarted());
@@ -34,6 +34,38 @@ const myShip = new Ship("Adilet", 25000);
 myShip.dropAnchor();
 myShip.raiseAnchor();
 
-const myPlane = new Plane();
+const myPlane = new Plane("Adilet", 119, 2);
 myPlane.lowerСhassis();
 myPlane.raiseСhassis();
+
+// -------------
+Array.prototype.TakeRight = function (count) {
+  let copy = [...this];
+  let arr = copy.reverse().slice(0, count);
+  return arr.reverse();
+};
+
+Array.prototype.TakeLeft = function (count) {
+  let copy = [...this];
+  let arr = copy.slice(0, count);
+  return arr;
+};
+
+Array.prototype.TakeWhile = function (filter) {
+  let arr = [];
+  let i = 0;
+  while (filter(this[i])) {
+    arr.push(this[i]);
+    i++;
+  }
+  return arr;
+};
+
+let testArr = [1, 2, 3, 4, 5, 6, "str", 12, 67892, "str1"];
+
+let rightPart = testArr.TakeRight(2);
+let leftPart1 = testArr.TakeLeft(2);
+console.log(rightPart, leftPart1);
+
+const filtered = testArr.TakeWhile((el) => typeof el !== typeof "");
+console.log(filtered, "s");

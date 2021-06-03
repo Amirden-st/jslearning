@@ -3,9 +3,24 @@ export default class Car extends Transport {
   #started = false;
   headlightsOn = false;
   wipersOn = false;
-  constructor(owner, mark) {
+  #weight;
+  constructor(owner, mark, weight) {
     super(owner, "car");
     this.mark = mark;
+    this.weight = weight;
+  }
+
+  get weight() {
+    return this.#weight;
+  }
+
+  set weight(w) {
+    if ((w < 1000) | (w > 2500)) {
+      throw new Error(
+        "Вес машины не может быть меньше 1 тонны или больше 2,5 тонн"
+      );
+    }
+    this.#weight = w;
   }
 
   start() {
@@ -33,7 +48,6 @@ export default class Car extends Transport {
     this.wipersOn = false;
     console.log("Headlights were off");
   }
-  
   isStarted() {
     return this.#started;
   }
